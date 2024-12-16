@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test:newman": "newman run tests/lalafo-filter-api-tests.postman_collection.json -r htmlextra --reporter-htmlextra-export reports/newman-report.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +14,8 @@
     "@cypress/webpack-preprocessor": "^6.0.2",
     "@types/node": "^22.10.2",
     "cypress": "^13.16.1",
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1",
     "typescript": "^5.7.2"
   }
 }

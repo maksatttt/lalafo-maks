@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "0d645296-f34e-418b-aded-67c6bdd0ddd7",
+		"name": "Lalafo Filter API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40155856"
+	},
+	"item": [
+		{
+			"name": "Get Listings with Filters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains listings array\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('listings').that.is.an('array');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/listings?category={{category}}&price_min={{price_min}}&price_max={{price_max}}&location={{location}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listings"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "{{category}}"
+						},
+						{
+							"key": "price_min",
+							"value": "{{price_min}}"
+						},
+						{
+							"key": "price_max",
+							"value": "{{price_max}}"
+						},
+						{
+							"key": "location",
+							"value": "{{location}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains categories array\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('categories').that.is.an('array');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/categories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Locations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains locations array\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('locations').that.is.an('array');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/locations",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api.lalafo.kg",
+			"type": "string"
+		},
+		{
+			"key": "category",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "price_min",
+			"value": "1000",
+			"type": "string"
+		},
+		{
+			"key": "price_max",
+			"value": "5000",
+			"type": "string"
+		},
+		{
+			"key": "location",
+			"value": "Bishkek",
+			"type": "string"
+		}
+	]
+}
